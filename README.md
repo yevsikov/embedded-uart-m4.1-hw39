@@ -5,14 +5,14 @@ This is a small educational project for the [Embedded Development course](https:
 
 
 ## Scheme
-```
-
 Схема підключення
-Компонент	                    GPIO ESP32-S3	            Примітка
-UART1 TX (→ RX на STM32)	    GPIO17	                    до PA3 (USART2_RX) на STM32F401, навхрест
-UART1 RX (← TX з STM32)	        GPIO18	                    від PA2 (USART2_TX) на STM32F401, навхрест
-Кнопка	                        GPIO5	                    внутрішній pull-up, натискання = LOW
-LED (індикатор команди з STM32)	GPIO4	                    через резистор ~330 Ом на GND
-GND	                            GND	                        спільний з STM32 — обов’язково
-UART0 (консоль)	                вбудований USB	            автоматично, для idf.py monitor — не чіпаємо
-```
+
+| Компонент | GPIO ESP32-S3 | GPIO STM32 BlackPill F411CE | Примітка |
+| --- | --- | --- | --- |
+| UART1 TX | GPIO17 | PA10 / Serial1 RX | з'єднати навхрест |
+| UART1 RX | GPIO18 | PA9 / Serial1 TX | з'єднати навхрест |
+| Кнопка | GPIO5 | PA0 | внутрішній pull-up, натискання = LOW |
+| LED | GPIO4 | LED_BUILTIN | для STM32 LED активний LOW |
+| GND | GND | GND | спільна земля обов'язкова |
+
+Примітка: UART працює на 115200, 8N1, а рівні сигналів для обох плат мають бути 3.3 V.
